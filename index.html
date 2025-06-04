@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Эвакуатор Бобруйск — ИП Хверенец</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+    header, footer { background: #002b5e; color: white; text-align: center; padding: 20px; }
+    main { padding: 20px; max-width: 800px; margin: auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { font-size: 26px; margin-bottom: 10px; }
+    a { color: #007bff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 20px; }
+    .gallery img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+    form { display: flex; flex-direction: column; gap: 10px; margin-top: 30px; }
+    input, textarea, button {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #status {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 10px; }
+      h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Эвакуатор в Бобруйске и Могилёвской области</h1>
+    <p>Работаем 24/7 — Звоните <a href="tel:+375291112233">+375 (29) 111-22-33</a></p>
+  </header>
+  <main>
+    <h2>Наши услуги</h2>
+    <ul>
+      <li>Эвакуация легковых автомобилей</li>
+      <li>Перевозка мотоциклов, спецтехники</li>
+      <li>Оперативный выезд в любую точку области</li>
+    </ul>
+
+    <h2>Примеры работ</h2>
+    <div class="gallery">
+      <img src="photo1.jpg" alt="эвакуация авто">
+      <img src="photo2.jpg" alt="эвакуатор в Бобруйске">
+      <img src="photo3.jpg" alt="услуги эвакуатора">
+    </div>
+
+    <h2>Оставьте заявку</h2>
+    <form id="tgForm">
+      <input type="text" id="name" placeholder="Ваше имя" required />
+      <input type="tel" id="phone" placeholder="Телефон" required />
+      <textarea id="message" placeholder="Комментарий"></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+    <p id="status"></p>
+  </main>
+  <footer>
+    <p>© 2025 ИП Хверенец. Все права защищены.</p>
+  </footer>
+
+  <script>
+    document.getElementById('tgForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+      const status = document.getElementById('status');
+
+      const token = "7048871888:AAH75GxE-Twk1R1Dz6rL4juACVoICz25Ouc";
+      const chat_id = "7705574678";
+      const text = `🚗 Новая заявка с сайта:%0A👤 Имя: ${name}%0A📞 Телефон: ${phone}%0A✏️ Комментарий: ${message}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}`)
+        .then(response => {
+          if (response.ok) {
+            status.textContent = "✅ Заявка успешно отправлена!";
+            document.getElementById('tgForm').reset();
+          } else {
+            status.textContent = "❌ Ошибка отправки.";
+          }
+        })
+        .catch(error => {
+          status.textContent = "⚠️ Не удалось подключиться к Telegram.";
+        });
+    });
+  </script>
+</body>
+</html>
