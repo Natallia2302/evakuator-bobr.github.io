@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Эвакуатор Бобруйск</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #007acc;
+    }
+    p {
+      font-size: 18px;
+    }
+    .contact {
+      margin-top: 30px;
+    }
+    .telegram-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #0088cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .media {
+      margin-top: 40px;
+    }
+    .media img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+    }
+    .tiktok-video {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚗 Эвакуатор в Бобруйске</h1>
+  <p>Сайт работает! Добро пожаловать.</p>
+
+  <div class="contact">
+    <p><strong>Звоните: </strong><a href="tel:+375295530822">+375 29 553-08-22</a></p>
+    <p><strong>Напишите в Telegram:</strong></p>
+    <a class="telegram-button" href="https://t.me/Nata2302_Bot" target="_blank">Связаться с ботом</a>
+  </div>
+
+  <div class="media">
+    <h2>Наши работы</h2>
+    <!-- Пример изображения -->
+    <img src="images/evakuator1.jpg" alt="Эвакуатор 1">
+    <img src="images/evakuator2.jpg" alt="Эвакуатор 2">
+
+    <h2>Наш TikTok</h2>
+    <!-- Пример встраивания TikTok-видео -->
+    <div class="tiktok-video">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@avtovoz_bobr.by/video/7511349166333889797" data-video-id="7511349166333889797" style="max-width: 605px;min-width: 325px;">
+        <section>
+          <a target="_blank" title="@avtovoz_bobr.by" href="https://www.tiktok.com/@avtovoz_bobr.by">@avtovoz_bobr.by</a>
+        </section>
+      </blockquote>
+    </div>
+    <div class="tiktok-video">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@avtovoz_bobr.by/video/7510989790481829126" data-video-id="7510989790481829126" style="max-width: 605px;min-width: 325px;">
+        <section>
+          <a target="_blank" title="@avtovoz_bobr.by" href="https://www.tiktok.com/@avtovoz_bobr.by">@avtovoz_bobr.by</a>
+        </section>
+      </blockquote>
+    </div>
+  </div>
+
+  <script async src="https://www.tiktok.com/embed.js"></script>
+</body>
+</html>
 
