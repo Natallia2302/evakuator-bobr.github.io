@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,12 +7,15 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #d9fdd3; /* светло-зелёный фон */
+      background-color: #d6f5d6; /* Светло-зелёный фон */
       color: #333;
       text-align: center;
       padding: 20px;
     }
     h1, h2 {
+      color: #007acc;
+    }
+    a {
       color: #007acc;
     }
     .button {
@@ -31,10 +33,8 @@
       margin: 10px;
       border-radius: 8px;
     }
-    .videos video {
-      width: 320px;
-      height: auto;
-      margin: 10px;
+    .tiktok {
+      margin: 20px auto;
     }
     form {
       margin-top: 20px;
@@ -57,11 +57,12 @@
   <p>Сайт работает! Добро пожаловать.</p>
 
   <p><strong>Звоните:</strong> <a href="tel:+375295530822">+375 29 553-08-22</a></p>
-
+  <p><strong>Напишите в Telegram:</strong></p>
   <a class="button" href="https://t.me/EvakBobrBot" target="_blank">Связаться с ботом</a>
-  <p>WhatsApp: +375293800444 | Viber: +375295530822</p>
 
-  <h2>Наши видео</h2>
+  <p><strong>Наш TikTok:</strong> @avtovoz_bobr.by</p>
+
+<h2>Наши видео</h2>
   <div class="videos">
     <video controls src="ssstik.io_@avtovoz_bobr.by_1749212586969.mp4"></video>
     <video controls src="ssstik.io_@avtovoz_bobr.by_1749212644719.mp4"></video>
@@ -72,10 +73,82 @@
     <video controls src="ssstik.io_@avtovoz_bobr.by_1749212858602.mp4"></video>
     <video controls src="video1.mp4"></video>
   </div>
+  <h2>Галерея</h2>
+  <div class="gallery">
+    <img src="avik1.jpg" alt="avik1">
+    <img src="avik2.jpg" alt="avik2">
+    <img src="avik4.jpg" alt="avik4">
+    <img src="avik5.jpg" alt="avik5">
+    <img src="avik6.jpg" alt="avik6">
+  </div>
+
+  <h2>Оставьте заявку</h2>
+  <form id="tg-form">
+    <input type="text" placeholder="Ваше имя" required><br>
+    <input type="text" placeholder="Телефон" required><br>
+    <textarea placeholder="Опишите проблему или адрес" rows="4" required></textarea><br>
+    <button class="button" type="submit">Отправить</button>
+  </form>
 
   <footer>
     © 2025 ИП Хверенец. Все права защищены.
   </footer>
 
+  <script>
+    document.getElementById("tg-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.querySelector("input[placeholder='Ваше имя']").value;
+      const phone = document.querySelector("input[placeholder='Телефон']").value;
+      const message = document.querySelector("textarea").value;
+
+      const text = `📨 Новая заявка с сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📝 Сообщение: ${message}`;
+
+      const botToken = "7048871888:AAH75GxE-Twk1R1Dz6rL4juACVoICz25Ouc";
+      const chatId = "7705574678";
+
+      // Отправка заявки
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          // Автоответ после заявки
+          fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text:
+                "✅ Спасибо за обращение! Мы обязательно вам поможем!\n" +
+                "С вами свяжется специалист в течение 10 минут!\n\n" +
+                "📞 Вы можете позвонить нам быстрее:\n" +
+                "📱 Viber: +375295530822\n" +
+                "💬 WhatsApp: +375293800444\n" +
+                "📲 A1: +375447733949\n" +
+                "📲 МТС: +375295530822"
+            })
+          });
+
+          alert("✅ Заявка успешно отправлена!");
+          document.getElementById("tg-form").reset();
+        } else {
+          alert("❌ Ошибка при отправке.");
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
+
