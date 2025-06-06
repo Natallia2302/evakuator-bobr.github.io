@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      background-color: #d6f5d6; /* Светло-зелёный фон */
       color: #333;
       text-align: center;
       padding: 20px;
@@ -58,7 +58,7 @@
 
   <p><strong>Звоните:</strong> <a href="tel:+375295530822">+375 29 553-08-22</a></p>
   <p><strong>Напишите в Telegram:</strong></p>
-  <a class="button" href="https://t.me/Nata2302_Bot" target="_blank">Связаться с ботом</a>
+  <a class="button" href="https://t.me/EvakBobrBot" target="_blank">Связаться с ботом</a>
 
   <p><strong>Наш TikTok:</strong> @avtovoz_bobr.by</p>
 
@@ -109,6 +109,7 @@
       const botToken = "7048871888:AAH75GxE-Twk1R1Dz6rL4juACVoICz25Ouc";
       const chatId = "7705574678";
 
+      // Отправка заявки
       fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: "POST",
         headers: {
@@ -122,6 +123,25 @@
       .then(res => res.json())
       .then(data => {
         if (data.ok) {
+          // Автоответ после заявки
+          fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text:
+                "✅ Спасибо за обращение! Мы обязательно вам поможем!\n" +
+                "С вами свяжется специалист в течение 10 минут!\n\n" +
+                "📞 Вы можете позвонить нам быстрее:\n" +
+                "📱 Viber: +375295530822\n" +
+                "💬 WhatsApp: +375293800444\n" +
+                "📲 A1: +375447733949\n" +
+                "📲 МТС: +375295530822"
+            })
+          });
+
           alert("✅ Заявка успешно отправлена!");
           document.getElementById("tg-form").reset();
         } else {
