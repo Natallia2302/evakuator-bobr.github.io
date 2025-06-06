@@ -1,110 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Эвакуатор Бобруйск и Могилевская область</title>
+  <meta charset="UTF-8">
+  <title>Эвакуатор Бобруйск | ИП Хверенец</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: sans-serif;
-      background: #e5fbe5; /* светло-зелёный */
+      background-color: #e0f9d4;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      text-align: center;
+      color: #222;
     }
     header {
-      background: #003300;
+      background-color: #3b973b;
       color: white;
-      padding: 20px;
+      text-align: center;
+      padding: 1rem;
     }
-    img {
-      max-width: 90%;
-      height: auto;
-      margin: 10px 0;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
-    }
-    form {
-      margin: 20px auto;
-      max-width: 400px;
-      background: #ffffff;
-      padding: 20px;
+    main {
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background: white;
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    input, textarea {
-      width: 95%;
-      margin: 8px 0;
-      padding: 10px;
+    form input, form textarea, form button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-    button {
-      background-color: #1d8ed8;
+    form button {
+      background-color: #3b973b;
       color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
       cursor: pointer;
+      transition: 0.3s;
     }
-    .contacts {
-      margin: 20px 0;
+    form button:hover {
+      background-color: #2d7f2d;
     }
-    .tiktok {
-      margin: 20px auto;
-      max-width: 350px;
-    }
-    .btn-bot {
-      display: inline-block;
+    #status {
       margin-top: 10px;
-      background-color: #0088cc;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
       font-weight: bold;
+      color: green;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #555;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Эвакуатор Бобруйск и Могилевская область</h1>
-  <p>Круглосуточно • Быстро • Надёжно</p>
-  <p>📞 <a href="tel:+375295530822" style="color:yellow;">+375 29 553 08 22</a></p>
-  <p class="contacts">
-    💬 WhatsApp: <a href="https://wa.me/375293800444" target="_blank">+375 29 380 04 44</a><br>
-    💜 Viber: <a href="viber://chat?number=+375295530822">+375 29 553 08 22</a>
-  </p>
-  <a href="https://t.me/EvakBobrBot" class="btn-bot" target="_blank">Связаться с ботом</a>
+  <h1>🚗 Эвакуатор Бобруйск и Могилевская область</h1>
+  <p>Работаем круглосуточно • Быстро • Надежно</p>
 </header>
 
-<section>
-  <h2>Наш автопарк</h2>
-  <img src="avik1.jpg" alt="Эвакуатор 1">
-  <img src="avik2.jpg" alt="Эвакуатор 2">
-  <img src="avik3.jpg" alt="Эвакуатор 3">
-</section>
+<main>
+  <h2>Связаться с нами</h2>
+  <form id="tg-form">
+    <input type="text" id="name" placeholder="Ваше имя" required>
+    <input type="tel" id="phone" placeholder="Номер телефона" required>
+    <textarea id="message" placeholder="Сообщение" required></textarea>
+    <button type="submit">Связаться с ботом</button>
+    <div id="status"></div>
+  </form>
 
-<section class="tiktok">
-  <h2>Посмотрите видео:</h2>
-  <iframe src="https://www.tiktok.com/embed/7510989790481829126" 
-          width="325" height="575" 
-          frameborder="0" allowfullscreen></iframe>
-  <br>
-  <iframe src="https://www.tiktok.com/embed/7510990379462839558" 
-          width="325" height="575" 
-          frameborder="0" allowfullscreen></iframe>
-</section>
+  <p><strong>Контакты:</strong></p>
+  <ul>
+    <li>📱 Viber: <a href="viber://chat?number=+375295530822">+375295530822</a></li>
+    <li>💬 WhatsApp: <a href="https://wa.me/375293800444">+375293800444</a></li>
+    <li>📞 A1: +375447733949</li>
+    <li>📞 MTC: +375295530822</li>
+    <li>🤖 Telegram: <a href="https://t.me/EvakBobrBot" target="_blank">@EvakBobrBot</a></li>
+  </ul>
+</main>
 
-<h2>Оставьте заявку</h2>
-<form id="tg-form">
-  <input type="text" id="name" placeholder="Ваше имя" required><br>
-  <input type="tel" id="phone" placeholder="Телефон" required><br>
-  <textarea id="message" placeholder="Опишите проблему или адрес" required></textarea><br>
-  <button type="submit">Отправить</button>
-</form>
-<p id="status" style="margin-top: 10px; color: green;"></p>
+<footer>
+  © 2025 ИП Хверенец | Эвакуатор Бобруйск
+</footer>
 
 <script>
   const token = '7048871888:AAH75GxE-Twk1R1Dz6rL4juACVoICz25Ouc';
@@ -119,31 +101,5 @@
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
 
-    const text = `<b>Заявка с сайта</b>\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📦 Сообщение: ${message}`;
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
-
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id, text, parse_mode: 'HTML' })
-    })
-    .then(response => {
-      if (response.ok) {
-        status.textContent = "✅ Заявка успешно отправлена!";
-        form.reset();
-      } else {
-        status.textContent = "❌ Ошибка при отправке. Попробуйте позже.";
-      }
-    })
-    .catch(error => {
-      status.textContent = "⚠ Ошибка сети. Проверьте подключение.";
-      console.error('Ошибка:', error);
-    });
-  });
-</script>
-
-</body>
-</html>
-
-<body>
-
+    const userText = `<b>Новая заявка с сайта</b>\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📦 Сообщение: ${message}`;
+    const replyText = `Спасибо за обращение! Мы обязательно вам поможем! С вами св
