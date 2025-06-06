@@ -1,51 +1,40 @@
-<script>
-  const token = '7048871888:AAH75GxE-Twk1R1Dz6rL4juACVoICz25Ouc';
-  const chat_id = '7705574678';
-  const form = document.getElementById('tg-form');
-  const status = document.getElementById('status');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    const userText = `<b>Заявка с сайта</b>\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📦 Сообщение: ${message}`;
-
-    const replyText = `Спасибо за обращение! Мы обязательно вам поможем! С вами свяжется специалист в течение 10 минут! \n\nлЕсли хотите связаться быстрее, для вашего удобства наши контакты:\n📱 Viber: +375295530822\n💬 WhatsApp: +375293800444\n📞 A1: +375447733949\n📞 MTC: +375295530822`;
-
-    // Отправка первого сообщения с данными клиента
-    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id, text: userText, parse_mode: 'HTML' })
-    })
-    .then(response => {
-      if (!response.ok) throw new Error('Ошибка при отправке формы');
-
-      // Если первое сообщение успешно, отправляем автоответ
-      return fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id, text: replyText })
-      });
-    })
-    .then(response => {
-      if (response.ok) {
-        status.textContent = "✅ Заявка успешно отправлена!";
-        form.reset();
-      } else {
-        status.textContent = "⚠ Ошибка при отправке автоответа.";
-      }
-    })
-    .catch(error => {
-      status.textContent = "❌ Ошибка. Попробуйте позже.";
-      console.error('Ошибка:', error);
-    });
-  });
-</script>
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Эвакуатор Бобруйск и Могилевская область</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #e5fbe5; /* светло-зелёный */
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #003300;
+      color: white;
+      padding: 20px;
+    }
+    img {
+      max-width: 90%;
+      height: auto;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+    form {
+      margin: 20px auto;
+      max-width: 400px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 95%;
+      margin: 8px 0;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -94,9 +83,7 @@
   <h2>Наш автопарк</h2>
   <img src="avik1.jpg" alt="Эвакуатор 1">
   <img src="avik2.jpg" alt="Эвакуатор 2">
-  <img src="avik4.jpg" alt="Эвакуатор 3">
-  <img src="avik5.jpg" alt="Эвакуатор 1">
-  <img src="avik6.jpg" alt="Эвакуатор 2">
+  <img src="avik3.jpg" alt="Эвакуатор 3">
 </section>
 
 <section class="tiktok">
@@ -105,23 +92,7 @@
           width="325" height="575" 
           frameborder="0" allowfullscreen></iframe>
   <br>
-  <iframe src="https://www.tiktok.com/embed/7504986019523988741" 
-          width="325" height="575" 
-          frameborder="0" allowfullscreen></iframe>
-   <br>
-  <iframe src="https://www.tiktok.com/embed/7333895061962280198" 
-          width="325" height="575" 
-          frameborder="0" allowfullscreen></iframe>
-   <br>
-  <iframe src="https://www.tiktok.com/embed/7333862506357689605" 
-          width="325" height="575" 
-          frameborder="0" allowfullscreen></iframe>
-   <br>
-   <iframe src="https://www.tiktok.com/embed/7506974204525382918" 
-          width="325" height="575" 
-          frameborder="0" allowfullscreen></iframe>
-   <br>
-   <iframe src="https://www.tiktok.com/embed/7510990379462839558" 
+  <iframe src="https://www.tiktok.com/embed/7510990379462839558" 
           width="325" height="575" 
           frameborder="0" allowfullscreen></iframe>
 </section>
@@ -174,36 +145,5 @@
 </body>
 </html>
 
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    button {
-      background-color: #1d8ed8;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .contacts {
-      margin: 20px 0;
-    }
-    .tiktok {
-      margin: 20px auto;
-      max-width: 350px;
-    }
-    .btn-bot {
-      display: inline-block;
-      margin-top: 10px;
-      background-color: #0088cc;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
-</head>
 <body>
 
